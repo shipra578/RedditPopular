@@ -21,12 +21,12 @@ android {
         debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField("String", "MAIN_URL", "\"https://www.reddit.com/subreddits/popular/\"")
+            buildConfigField("String", "MAIN_URL", "\"https://www.reddit.com/\"")
         }
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField("String", "MAIN_URL", "\"https://www.reddit.com/subreddits/popular/\"")
+            buildConfigField("String", "MAIN_URL", "\"https://www.reddit.com/\"")
         }
     }
     dataBinding {
