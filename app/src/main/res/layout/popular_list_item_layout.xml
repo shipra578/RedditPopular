@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="250dp"
+    app:cardBackgroundColor="@android:color/transparent"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="5dp"
+    app:cardUseCompatPadding="true">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/margin_left_right">
+
+        <TextView
+            android:id="@+id/headline_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:textSize="@dimen/description_text_size"
+            app:layout_constraintBottom_toTopOf="@+id/guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/content_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constraintTop_toBottomOf="@+id/headline_title"
+            app:layout_constraintBottom_toTopOf="@+id/guideline"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="100dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_begin="153dp" />
+
+        <ImageView
+            android:id="@+id/comments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:srcCompat="@drawable/comment"
+            app:layout_constraintStart_toEndOf="@+id/img_upvote"
+            app:layout_constraintEnd_toStartOf="@+id/favourite"
+            app:layout_constraintTop_toBottomOf="@+id/guideline2"
+            tools:layout_editor_absoluteX="150dp" />
+
+        <ImageView
+            android:id="@+id/img_downvote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/down_vote"
+            app:layout_constraintTop_toBottomOf="@+id/guideline2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/img_upvote"
+            tools:layout_editor_absoluteX="46dp"
+            tools:layout_editor_absoluteY="194dp" />
+
+        <ImageView
+            android:id="@+id/img_upvote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/comments"
+            app:layout_constraintStart_toEndOf="@+id/img_downvote"
+            app:layout_constraintTop_toBottomOf="@+id/guideline2"
+            app:srcCompat="@drawable/upvote" />
+
+        <ImageView
+            android:id="@+id/favourite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/favourtie"
+            tools:layout_editor_absoluteX="207dp"
+            app:layout_constraintStart_toEndOf="@+id/comments"
+            app:layout_constraintEnd_toStartOf="@+id/share_btn"
+            app:layout_constraintTop_toBottomOf="@+id/guideline2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_editor_absoluteY="194dp" />
+
+        <ImageView
+            android:id="@+id/share_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/share"
+            app:layout_constraintStart_toEndOf="@+id/favourite"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guideline2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_editor_absoluteX="273dp"
+            tools:layout_editor_absoluteY="194dp" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
