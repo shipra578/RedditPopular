@@ -30,25 +30,29 @@ class MainActivity : AppCompatActivity(), ListItemClickListener {
         Thread(Runnable {
 
             try {
-                val stringBuilder = StringBuilder()
-                val doc = Jsoup.connect("https://www.reddit.com/subreddits/popular").get()
+                val doc = Jsoup.connect(BuildConfig.MAIN_URL).get()
+
                 val pageTitle = doc.title()
 
-                val links = doc.select("div[class$=entry unvoted]")
-                stringBuilder.append(pageTitle).append("\n")
 
-                for (link in links as Elements) {
+                val superLinks = doc.select("div[class][data-fullname]")
 
-                    val childLink = link.select("a[href][class]")
+                for (link in superLinks as Elements) {
+
+                    val links = link.select("div[class$=entry unvoted]")
+
+                    val childLink = links.select("a[href][class]")
                     val descriptionTag = link.select("div[class$=md]").select("p")
 
                     val desc = descriptionTag.text();
                     val title = childLink.text()
                     val URL = childLink.attr("abs:href")
 
+                    val uniqueId = link.attr("data-fullname");
                     Log.e(TAG, "title:  $title")
                     Log.e(TAG, "Url:  $URL")
                     Log.e(TAG, "Description:  $desc")
+                    Log.e(TAG, "uniqueID :  $uniqueId")
 
                 }
             } catch (e: IOException) {

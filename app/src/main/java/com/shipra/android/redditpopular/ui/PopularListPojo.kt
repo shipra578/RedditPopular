@@ -2,15 +2,54 @@ package com.shipra.android.redditpopular.ui
 
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.ForeignKey
 
-data class PopularListPojo(val description: String,val urlImage: String , val commentsurl : String , val isFavourite: Boolean) :  Comparable<PopularListPojo>, Parcelable {
+@Entity(tableName = "popular_table_detail", foreignKeys = [ForeignKey(entity = MainPopularListPojo::class, parentColumns = ["id"], childColumns = ["id_front"], onDelete = ForeignKey.NO_ACTION)])
+data class PopularListPojo(
+
+    @ColumnInfo(name = "description")
+    val description: String,
+
+    @ColumnInfo(name = "urlImage")
+    val urlImage: String,
+
+    @ColumnInfo(name = "commentsurl")
+    val commentsurl: String,
+
+    @ColumnInfo(name = "newsUrl")
+    val newsUrl: String,
+
+    @ColumnInfo(name = "mainUrl")
+    val mainUrl: String,
+
+    @ColumnInfo(name = "isFavourite")
+    val isFavourite: Boolean,
+
+    @ColumnInfo(name = "isSaveSelected")
+    val isSaveSelected: Boolean,
+
+    @ColumnInfo(name = "shareCount")
+    val shareCount: Int,
+
+
+    @ColumnInfo(name = "id_front")
+    val id_front: String
+
+) : Comparable<PopularListPojo>, Parcelable {
 
 
     constructor(parcel: Parcel) : this(
         parcel.readString().toString(),
         parcel.readString().toString(),
         parcel.readString().toString(),
-        parcel.readByte() != 0.toByte()
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readByte() != 0.toByte(),
+        parcel.readByte() != 0.toByte(),
+        parcel.readInt(),
+        parcel.readString().toString()
     ) {
     }
 
@@ -18,7 +57,12 @@ data class PopularListPojo(val description: String,val urlImage: String , val co
         p0?.writeString(description)
         p0?.writeString(urlImage)
         p0?.writeString(commentsurl)
+        p0?.writeString(newsUrl)
+        p0?.writeString(mainUrl)
         p0?.writeByte(if (isFavourite) 1 else 0)
+        p0?.writeByte(if (isSaveSelected) 1 else 0)
+        p0?.writeInt(shareCount)
+        p0?.writeString(id_front)
     }
 
     override fun describeContents(): Int {

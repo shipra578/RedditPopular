@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.fron_page_list_item.view.*
 
 class FrontPageListAdapter(
     context: Context?,
-    var mList: List<MainPopularList>,
+    var mList: List<MainPopularListPojo>,
     val clickListener: ListItemClickListener?
 ) :
     RecyclerView.Adapter<FrontPageListAdapter.FrontPageViewHolder>() {
