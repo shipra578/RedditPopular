@@ -10,16 +10,19 @@ android {
     compileSdkVersion 29
     defaultConfig {
         applicationId "com.shipra.android.redditpopular"
-        minSdkVersion 24
+        minSdkVersion 26
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    kapt {
+        generateStubs = true
+    }
     buildTypes {
 
         debug {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField("String", "MAIN_URL", "\"https://www.reddit.com/\"")
         }
@@ -32,10 +35,15 @@ android {
     dataBinding {
         enabled = true
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
     kapt 'com.android.databinding:compiler:3.1.4'
+    kapt 'com.google.dagger:dagger-compiler:2.12'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'
